@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  weirdfarmerinsults:
+    image: postgres:13
+    restart: always
+    environment:
+      - POSTGRES_USER=weirdfarmerinsults
+      - POSTGRES_PASSWORD=weirdfarmerinsults
+      - POSTGRES_DB=weirdfarmerinsults
+    volumes:
+      - ./docker/data/postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"

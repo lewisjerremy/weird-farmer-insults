@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Word {
+  id        Int      @id @default(autoincrement())
+  word      String   @unique
+  type      String
+  insults   Insult[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Insult {
+  id         Int      @id @default(autoincrement())
+  insultText String
+  words      Word[] 
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
